@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>This is an user page</h1>
+    <router-view></router-view>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
