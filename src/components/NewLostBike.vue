@@ -1,14 +1,50 @@
 <template>
-    <div>
-        form
+    <div class="col-md-4">
+        <label>Manufacturer</label>
+        <input type="text" v-model="manufacturer" placeholder="Enter manufacturer" class="form-control" /><br>
+        <label>Color</label>
+        <input type="text" v-model="color" placeholder="Enter color" class="form-control" /><br>
+        <label>Model</label>
+        <input type="text" v-model="model" placeholder="Enter model" class="form-control" /><br>
+        <label>Description</label>
+        <textarea v-model="description" placeholder="Enter some details" class="form-control"></textarea>
+        <button v-on:click="Submit">Submit</button>
     </div>
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from 'vue-property-decorator';
+    import config from '../../config';
 
-    @Component
-    export default class NewLostBike extends Vue {
-
+    export default {
+        name: "NewLostBike",
+        data()
+        {
+            return{
+                manufacturer: "",
+                color: "",
+                model: "",
+                description: ""
+            }
+        },
+        methods:{
+            Submit()
+            {
+                let data= {
+                    userId: 1,
+                    name: this.manufacturer,
+                    color: this.color,
+                    model: this.model,
+                    description : this.description
+                }
+                fetch(`${config.API_URL}/api/user/report`,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+            }
+        }
     }
 </script>
