@@ -43,7 +43,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
-                })
+                }).then(response => this.$router.push(window.location.href))
             }
         }
     }

@@ -30,7 +30,7 @@ export default {
   methods: {
     async getData()
     {
-      let res = await fetch(`${config.API_URL}/api/admin/task?adminId=5efc4f1f54578a2af9ab4165`)
+      let res = await fetch(`${config.API_URL}/api/admin/task?adminId=5efc4f0654578a2af9ab4164`)
       console.log(res)
       let data = await res.json();
       console.log(data)
@@ -42,11 +42,12 @@ export default {
       let res = fetch(`${config.API_URL}/api/admin/task`,
       {
         method: "PUT",
-        body: JSON.stringify({adminId : "5efc4f1f54578a2af9ab4165"}),
+        body: JSON.stringify({adminId : "5efc4f0654578a2af9ab4164"}),
         headers: {
                         'Content-Type': 'application/json'
                     },
       })
+      res.then(response => window.location.reload())
     }
     
   }
