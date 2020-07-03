@@ -4,7 +4,10 @@
     <h1 v-show="!visible">...loading</h1>
     <ul>
       <li v-show="visible" v-for="task in tasks">
-        <p v-for="(value,key) in task">{{key}} : {{value}}</p>
+        <p>bike id : {{task.bikeId}}</p>
+        <p>begin date: {{task.beginDate}}</p>
+        <p v-show="task.isDone">end date : {{task.endDate}}</p>
+        <button v-show="!task.isDone" v-on:click="onChangeStatus">Change as Done</button>
       </li>
     </ul>
   </div>
@@ -27,13 +30,25 @@ export default {
   methods: {
     async getData()
     {
-      let res = await fetch(`${config.API_URL}/api/admin/task?adminId=5efc4f0654578a2af9ab4164`)
+      let res = await fetch(`${config.API_URL}/api/admin/task?adminId=5efc4f1f54578a2af9ab4165`)
       console.log(res)
       let data = await res.json();
       console.log(data)
       this.tasks = data.data;
       this.visible = true
+    },
+    onChangeStatus()
+    {
+      let res = fetch(`${config.API_URL}/api/admin/task`,
+      {
+        method: "PUT",
+        body: JSON.stringify({adminId : "5efc4f1f54578a2af9ab4165"}),
+        headers: {
+                        'Content-Type': 'application/json'
+                    },
+      })
     }
+    
   }
 }
 </script>

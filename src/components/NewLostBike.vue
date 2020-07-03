@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4">
+    <div class="form">
         <label>Manufacturer</label>
         <input type="text" v-model="manufacturer" placeholder="Enter manufacturer" class="form-control" /><br>
         <label>Color</label>
@@ -8,7 +8,7 @@
         <input type="text" v-model="model" placeholder="Enter model" class="form-control" /><br>
         <label>Description</label>
         <textarea v-model="description" placeholder="Enter some details" class="form-control"></textarea>
-        <button v-on:click="Submit">Submit</button>
+        <button v-on:click="Submit" style="margin: 30px">Submit</button>
     </div>
 </template>
 
@@ -48,3 +48,10 @@
         }
     }
 </script>
+<style>
+    .form
+    {
+        width: 50%;
+        margin: 50px auto;
+    }
+</style>

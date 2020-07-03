@@ -1,10 +1,13 @@
 <template>
     <div>
-        user lost bikes
+        <h1>user's lost bikes</h1>
         <h1 v-show="!isVisible">...loading</h1>
         <ul>
             <li v-show="isVisible" v-for="bike in lostBikes">
-                <p v-for="(value,key) in bike">{{key}} : {{value}}</p>
+                <p>model : {{bike.model}}</p>
+                <p>color : {{bike.color}}</p>
+                <p>manufacturer : {{bike.name}}</p>
+                <p>description : {{bike.description}}</p>
             </li>
         </ul>
     </div>
@@ -39,3 +42,18 @@
         }
     }
 </script>
+<style >
+    ul 
+    {
+        padding: 15px;
+        align-self: center;
+    }
+    li
+    {
+        width: 50%;
+        background: #eaebe9;
+        padding : 8px;
+        margin: 50px auto;
+        border : 1px solid #161616;
+    }
+</style>
