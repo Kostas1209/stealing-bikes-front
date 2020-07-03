@@ -2,6 +2,11 @@
   <div>
     <h1>This is an admin page</h1>
     <h1 v-show="!visible">...loading</h1>
+    <div class="form">
+        <label>Change Admin Id</label>
+        <input type="text" v-model="adminId" placeholder="Enter admin Id" class="form-control" /><br>
+        <button v-on:click="this.onChangeAdminId">Change</button>
+    </div>
     <ul>
       <li v-show="visible" v-for="task in tasks">
         <p>bike id : {{task.bikeId}}</p>
@@ -20,7 +25,8 @@ export default {
   data(){
     return{
     visible: false,
-    tasks : []
+    tasks : [],
+    adminId: config.ADMIN_ID
     }
   },
   beforeMount()
@@ -34,7 +40,13 @@ export default {
       console.log(res)
       let data = await res.json();
       console.log(data)
-      this.tasks = data.data;
+      if(data.success === true)
+      {
+        this.tasks = data.data;
+      }
+      else{
+        this.tasks = []
+      }
       this.visible = true
     },
     onChangeStatus()
@@ -48,8 +60,20 @@ export default {
                     },
       })
       res.then(response => window.location.reload())
+    },
+    async onChangeAdminId()
+    {
+      config.ADMIN_ID = this.adminId;
+      await this.getData()
     }
     
   }
 }
 </script>
+<style>
+    .form
+    {
+        width: 50%;
+        margin: 50px auto;
+    }
+</style>

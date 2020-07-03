@@ -1,5 +1,7 @@
 <template>
     <div class="form">
+        <label>Change User Id</label>
+        <input type="number" v-model="userId" placeholder="Enter user Id" class="form-control" /><br>
         <label>Manufacturer</label>
         <input type="text" v-model="manufacturer" placeholder="Enter manufacturer" class="form-control" /><br>
         <label>Color</label>
@@ -20,6 +22,7 @@
         data()
         {
             return{
+                userId: config.USER_ID,
                 manufacturer: "",
                 color: "",
                 model: "",
@@ -30,7 +33,7 @@
             Submit()
             {
                 let data= {
-                    userId: config.USER_ID,
+                    userId: this.userId,
                     name: this.manufacturer,
                     color: this.color,
                     model: this.model,
