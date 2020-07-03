@@ -28,7 +28,7 @@
         methods: {
             async getData()
             {
-                let res = await fetch(`${config.API_URL}/api/user/report?userId=1`)
+                let res = await fetch(`${config.API_URL}/api/user/report?userId=${config.USER_ID}`)
                 console.log(res)
                 let data = await res.json();
                 console.log(data)

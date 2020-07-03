@@ -30,7 +30,7 @@
             Submit()
             {
                 let data= {
-                    userId: 1,
+                    userId: config.USER_ID,
                     name: this.manufacturer,
                     color: this.color,
                     model: this.model,
